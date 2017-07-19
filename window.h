@@ -11,18 +11,18 @@ class CWindow : public QDialog
 {
     Q_OBJECT
 
-public slots:
-    void updateData();
+    public slots:
+        void updateData();
 
-public:
-    CWindow(QWidget *parent = 0);
-    virtual ~CWindow();
+    public:
+        CWindow(QWidget *parent = 0);
+        virtual ~CWindow();
 
-private:
-    QGraphicsScene* m_scene;
-    QGraphicsView* m_view;
-    QGraphicsTextItem* m_statsInfo;
-    QGraphicsTextItem* m_softInfo;
+    private:
+        QGraphicsScene* m_scene;
+        QGraphicsView* m_view;
+        QGraphicsTextItem* m_statsInfo;
+        QGraphicsTextItem* m_softInfo;
 };
 
 #endif
