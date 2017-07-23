@@ -1,6 +1,4 @@
-#include <QWidget>
-#include <QTimer>
-#include <QPointF>
+#include <QtWidgets>
 #include <random>
 #include <cmath>
 #include <iostream>
