@@ -7,6 +7,8 @@
 namespace {
     const qreal off_x = 500, off_y = 10, leng = 700, dot_size = 1;
 
+    const qreal marker_radius = 14;
+
     const QPointF t_points[] = {
         { off_x, off_y },
         { off_x + leng / 2, off_y + leng * std::sqrt(3) / 2 },
@@ -65,8 +67,12 @@ CWindow::CWindow(QWidget *parent)
 void CWindow::updateData() {
     static uint32_t cnt = 0, cnt_dots = 0;
     static QPointF point(start_point);
+    static QGraphicsItem* pMarker = 0;
 
+    //Less chaos, less order...
     auto rnd = random_13();
+    //auto rnd = fibo_13();
+
     auto& px = t_points[rnd];
     point = (point - px) / 2 + px;
 
@@ -79,6 +85,16 @@ void CWindow::updateData() {
                 dot_size,
                 QPen(colors[0]),
                 QBrush(colors[0]));
+
+        if(pMarker) {
+            m_scene->removeItem(pMarker);
+        }
+        pMarker = m_scene->addEllipse(point.x() - marker_radius / 2,
+                point.y() - marker_radius / 2,
+                marker_radius,
+                marker_radius,
+                QPen(colors[1]),
+                QBrush(colors[1]));
     }
 
     if((++cnt % 10) == 0) {
