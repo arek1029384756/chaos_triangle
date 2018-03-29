@@ -26,9 +26,9 @@ namespace {
     const auto TNONE = QTransform();
 
     uint32_t random_13() {
-        std::random_device rd;
-        std::mt19937 gen(rd());
-        std::uniform_int_distribution<> dis(0, 2);
+        static std::random_device rd;
+        static std::mt19937 gen(rd());
+        static std::uniform_int_distribution<> dis(0, 2);
         return dis(gen);
     }
 
